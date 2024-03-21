@@ -1,10 +1,11 @@
 using CleanArchitecture.Application;
+using CleanArchitecture.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddApplicationService();
-
+builder.Services.AddPersistanceServices(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
