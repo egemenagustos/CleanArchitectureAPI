@@ -11,7 +11,15 @@ namespace CleanArchitecture.Persistance.Contexts
 
         public DbSet<Brand> Brands { get; set; }
 
-        public BaseDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
+        public DbSet<Car> Cars { get; set; }
+
+        public DbSet<Fuel> Fuels { get; set; }
+
+        public DbSet<Model> Models { get; set; }
+
+        public DbSet<Transmission> Transmissions { get; set; }
+
+        public BaseDbContext(DbContextOptions<BaseDbContext> options, IConfiguration configuration) : base(options)
         {
             Configurations = configuration;
             Database.EnsureCreated();

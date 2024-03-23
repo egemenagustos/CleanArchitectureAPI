@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CleanArchitecture.Persistance.EntityConfigurations
 {
-    public class BrandConfiguration : IEntityTypeConfiguration<Brand>
+    public class FuelConfiguration : IEntityTypeConfiguration<Fuel>
     {
-        public void Configure(EntityTypeBuilder<Brand> builder)
+        public void Configure(EntityTypeBuilder<Fuel> builder)
         {
-            builder.ToTable("Brands").HasKey(x => x.Id);
+            builder.ToTable("Fuels").HasKey(x => x.Id);
 
             builder.Property(x => x.Id).HasColumnName("Id").IsRequired();
             builder.Property(x => x.Name).HasColumnName("Name").IsRequired();
@@ -16,7 +16,7 @@ namespace CleanArchitecture.Persistance.EntityConfigurations
             builder.Property(x => x.ModifiedDate).HasColumnName("ModifiedDate");
             builder.Property(x => x.DeletedDate).HasColumnName("DeletedDate");
 
-            builder.HasIndex(indexExpression: x => x.Name, name: "UK_Brands_Name").IsUnique();
+            builder.HasIndex(indexExpression: x => x.Name, name: "UK_Fuels_Name").IsUnique();
             builder.HasMany(x => x.Models);
 
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
