@@ -11,12 +11,21 @@ namespace CleanArchitecture.Persistance
     {
         public static IServiceCollection AddPersistanceServices(this IServiceCollection services, IConfiguration configuration)
         {
+            //services.AddDbContext<BaseDbContext>(options =>
+            //{
+            //    options.UseInMemoryDatabase("cleanArchitecture");
+            //});
+
             services.AddDbContext<BaseDbContext>(options =>
             {
-                options.UseInMemoryDatabase("cleanArchitecture");
+                options.UseSqlServer(configuration["ConnectionString:Database"]);
             });
 
             services.AddScoped<IBrandRepository, BrandRepository>();
+            services.AddScoped<IModelRepository, ModelRepository>();
+            services.AddScoped<ICarRepository, CarRepository>();
+            services.AddScoped<IFuelRepository, FuelRepository>();
+            services.AddScoped<ITransmissionRepository, TransmissionRepository>();
 
             return services;
         }
