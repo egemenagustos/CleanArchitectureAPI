@@ -2,21 +2,21 @@
 
 namespace CleanArchitecture.Domain.Entities
 {
-    public class Brand : Entity<Guid>
+    public class Transmission : Entity<Guid>
     {
         public string Name { get; set; }
 
         public virtual ICollection<Model> Models { get; set; }
 
-        public Brand(Guid id, string name) : this()
+        public Transmission()
+        {
+            Models = new HashSet<Model>();
+        }
+
+        public Transmission(Guid id, string name)
         {
             Id = id;
             Name = name;
-        }
-
-        public Brand()
-        {
-            Models = new HashSet<Model>();
         }
     }
 }
