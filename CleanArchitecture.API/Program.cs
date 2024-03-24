@@ -1,5 +1,6 @@
 using CleanArchitecture.Application;
 using CleanArchitecture.Persistance;
+using Core.CrossCuttingConcerns.Exceptions.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 //{
 //    app.ConfigureCustomExceptionMiddleware();
 //}
+
+//app.ConfigureCustomExceptionMiddleware();
 
 
 
