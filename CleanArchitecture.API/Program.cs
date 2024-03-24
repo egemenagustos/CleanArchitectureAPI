@@ -18,6 +18,13 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwaggerUI();
 }
 
+//if (app.Environment.IsProduction())
+//{
+//    app.ConfigureCustomExceptionMiddleware();
+//}
+
+
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
