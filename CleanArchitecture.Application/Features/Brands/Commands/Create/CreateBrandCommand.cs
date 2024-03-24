@@ -2,11 +2,12 @@
 using CleanArchitecture.Application.Features.Brands.Rules;
 using CleanArchitecture.Application.Servies.Repositories;
 using CleanArchitecture.Domain.Entities;
+using Core.Application.Pipelines.Transaction;
 using MediatR;
 
 namespace CleanArchitecture.Application.Features.Brands.Commands.Create
 {
-    public class CreateBrandCommand : IRequest<CreatedBrandResponse>
+    public class CreateBrandCommand : IRequest<CreatedBrandResponse>, ITransactionalRequest
     {
         public string Name { get; set; }
     }
@@ -31,9 +32,9 @@ namespace CleanArchitecture.Application.Features.Brands.Commands.Create
             Brand brand = _mapper.Map<Brand>(request);
             brand.Id = Guid.NewGuid();
 
-            Brand brandResult = await _brandRepository.AddAsync(brand);
+            await _brandRepository.AddAsync(brand);
 
-            CreatedBrandResponse response = _mapper.Map<CreatedBrandResponse>(brandResult);
+            CreatedBrandResponse response = _mapper.Map<CreatedBrandResponse>(brand);
             return response;
         }
     }
