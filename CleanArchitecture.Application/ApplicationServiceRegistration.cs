@@ -24,6 +24,7 @@ namespace CleanArchitecture.Application
                 configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
                 configuration.AddOpenBehavior(typeof(TranscationScopeBehavior<,>));
                 configuration.AddOpenBehavior(typeof(CachingBehavior<,>));
+                configuration.AddOpenBehavior(typeof(CacheRemovingBehavior<,>));
             });
 
             return services;
