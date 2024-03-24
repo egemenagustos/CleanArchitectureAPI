@@ -2,14 +2,21 @@
 using CleanArchitecture.Application.Features.Brands.Rules;
 using CleanArchitecture.Application.Servies.Repositories;
 using CleanArchitecture.Domain.Entities;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Transaction;
 using MediatR;
 
 namespace CleanArchitecture.Application.Features.Brands.Commands.Create
 {
-    public class CreateBrandCommand : IRequest<CreatedBrandResponse>, ITransactionalRequest
+    public class CreateBrandCommand : IRequest<CreatedBrandResponse>, ITransactionalRequest, ICacheRemoverRequest
     {
         public string Name { get; set; }
+
+        public string? CacheKey => "";
+
+        public bool BypassCache { get; }
+
+        public string? CacheGroupKey => "GetBrands";
     }
 
     public class CreateBrandCommandHandler : IRequestHandler<CreateBrandCommand, CreatedBrandResponse>
