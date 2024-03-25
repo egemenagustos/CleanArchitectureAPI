@@ -35,7 +35,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 //    app.ConfigureCustomExceptionMiddleware();
 //}
 
-//app.ConfigureCustomExceptionMiddleware();
+app.ConfigureCustomExceptionMiddleware();
 
 
 
