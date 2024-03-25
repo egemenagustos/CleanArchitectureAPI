@@ -2,6 +2,7 @@
 using CleanArchitecture.Application.Servies.Repositories;
 using CleanArchitecture.Domain.Entities;
 using Core.Application.Pipelines.Caching;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Core.Persistance.Paging;
@@ -9,7 +10,7 @@ using MediatR;
 
 namespace CleanArchitecture.Application.Features.Brands.Queries.GetList
 {
-    public class GetListBrandQuery : IRequest<GetListResponse<GetListBrandListItemDto>>, ICachableRequest
+    public class GetListBrandQuery : IRequest<GetListResponse<GetListBrandListItemDto>>, ICachableRequest, ILoggableRequest
     {
         public PageRequest PageRequest { get; set; }
 
