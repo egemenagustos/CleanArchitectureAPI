@@ -4,7 +4,7 @@ using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
 using Core.Application.Rules;
 using Core.CrossCuttingConcerns.Serilog;
-using Core.CrossCuttingConcerns.Serilog.Logger;
+using Core.CrossCuttingConcerns.Serilog.Loggers;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -32,6 +32,7 @@ namespace CleanArchitecture.Application
             });
 
             services.AddSingleton<LoggerServiceBase, FileLogger>();
+            services.AddSingleton<LoggerServiceBase, MssqlLogger>();
 
             return services;
         }
